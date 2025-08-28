@@ -103,9 +103,5 @@ body {
 	fill:  rgb(19, 192, 219); 
 }
 
-@media (max-width: 600px) {
-    .digital-watch svg {
-        width: 15vw; 
-    }
-}
+
 
