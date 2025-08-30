@@ -6,7 +6,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: #000;
-	font-family: 'Courier New', monospace;
 	position: relative;
 	overflow: hidden;
 }
@@ -134,3 +133,4 @@ body::before {
 	);
 	pointer-events: none;
 }
+
