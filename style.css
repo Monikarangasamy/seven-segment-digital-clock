@@ -6,6 +6,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: #000;
+	font-family: 'Courier New', monospace;
 	position: relative;
 	overflow: hidden;
 }
@@ -112,10 +113,12 @@ body {
 .digital-watch svg.num-9 .c,
 .digital-watch svg.num-9 .d,
 .digital-watch svg.num-9 .f,
-.digital-watch svg.num-9 .g {
+.digital-watch svg.num-9 .g
+{
 	fill: cyan;
-	filter: drop-shadow(0 0 10px cyan) drop-shadow(0 0 16px cyan);
+	filter: drop-shadow(0 0 8px cyan) drop-shadow(0 0 14px cyan);
 }
+
 
 body::before {
 	content: "";
@@ -128,9 +131,81 @@ body::before {
 		0deg,
 		rgba(90, 223, 223, 0.08) 0px,
 		rgba(0, 255, 255, 0.08) 2px,
-		transparent 4px,
-		transparent 5px
+		transparent 8px,
+		transparent 8px
 	);
 	pointer-events: none;
 }
 
+
+
+/*For Mobile View*/
+
+@media (max-width: 600px) {
+    body {
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0;
+        height: 100vh;
+        background: #181c22;
+    }
+
+    .digital-watch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        padding-top: 40px;
+        box-sizing: border-box;
+    }
+
+    .digital-watch .hour,
+    .digital-watch .minute,
+    .digital-watch .second {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        width: 50vw;
+        min-height: 140px;
+        position: relative;
+    }
+
+    .digital-watch svg {
+        margin: 0 10px;
+        width: 60vw !important;
+        height: 30vw !important;
+        max-width: 240px;
+        max-height: 120px;
+    }
+
+    .digital-watch .hour::before,
+    .digital-watch .hour::after,
+    .digital-watch .minute::before,
+    .digital-watch .minute::after {
+        display: block;
+        position: absolute;
+        right: -12px;
+        width: 9px;
+        height: 9px;
+        background-color: cyan;
+        box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+        border-radius: 50%;
+        content: '';
+    }
+
+    .digital-watch .second::before,
+    .digital-watch .second::after {
+        display: none;
+    }
+
+    .digital-watch .hour::before,
+    .digital-watch .minute::before {
+        top: 40px;
+    }
+    .digital-watch .hour::after,
+    .digital-watch .minute::after {
+        top: 90px;
+    }
+}
