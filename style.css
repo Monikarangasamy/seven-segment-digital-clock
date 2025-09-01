@@ -120,6 +120,11 @@ body {
 }
 
 
+
+
+
+
+
 body::before {
 	content: "";
 	position: absolute;
@@ -136,6 +141,17 @@ body::before {
 	);
 	pointer-events: none;
 }
+.ampm {
+    position: absolute;
+    top: 8px;
+    right: -85px;
+    color: cyan;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan;
+    letter-spacing: 7px;
+}
+
 
 
 
@@ -168,7 +184,7 @@ body::before {
         align-items: center;
         margin: 0;
         width: 50vw;
-        min-height: 140px;
+        min-height: 160px;
         position: relative;
     }
 
@@ -208,4 +224,14 @@ body::before {
     .digital-watch .minute::after {
         top: 90px;
     }
+    .ampm {
+    position: absolute;
+    top: 100px;
+    right: -50px;
+    color: cyan;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan;
+    letter-spacing: 7px;
+}
 }
