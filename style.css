@@ -32,7 +32,7 @@ body {
 	width: 20px;
 	height: 20px;
 	background-color: cyan;
-	box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+	/* box-shadow: 0 0 10px cyan, 0 0 20px cyan; */
 	border-radius: 50%;
 }
 .digital-watch .hour::before,
@@ -115,8 +115,8 @@ body {
 .digital-watch svg.num-9 .f,
 .digital-watch svg.num-9 .g
 {
-	fill: cyan;
-	filter: drop-shadow(0 0 8px cyan) drop-shadow(0 0 14px cyan);
+	fill: cyan
+	/* filter: drop-shadow(0 0 8px cyan) drop-shadow(0 0 14px cyan); */
 }
 
 
@@ -148,16 +148,52 @@ body::before {
     color: cyan;
     font-size: 60px;
     font-weight: bold;
-    text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan;
+    /* text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan; */
     letter-spacing: 7px;
 }
+
+
+
+/* Neon gradient overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+/* background: linear-gradient(135deg, teal,darkblue, black); */
+/* background: linear-gradient(135deg, purple , navy , black); */
+  /* background: linear-gradient(135deg,magenta,violet , black); */
+/* background: linear-gradient(135deg, #ff512f, #dd2476, #240b36); */
+  background: linear-gradient( darkgreen, teal, black);
+  animation: spin 10s linear infinite;
+  filter: blur(140px);
+  opacity: 0.8;
+  z-index: 2;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+/* Make sure your clock stays above the background */
+.digital-watch, .date {
+  position: relative;
+  z-index: 2;
+}
+
+
 
 
 
 
 /*For Mobile View*/
 
-@media (max-width: 600px) {
+ @media (max-width: 600px) {
     body {
         justify-content: flex-start;
         align-items: flex-start;
@@ -206,7 +242,7 @@ body::before {
         width: 9px;
         height: 9px;
         background-color: cyan;
-        box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+        /* box-shadow: 0 0 10px cyan, 0 0 20px cyan; */
         border-radius: 50%;
         content: '';
     }
@@ -231,7 +267,64 @@ body::before {
     color: cyan;
     font-size: 30px;
     font-weight: bold;
-    text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan;
+    /* text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan; */
     letter-spacing: 7px;
 }
+/* Neon gradient overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+/* background: linear-gradient(135deg, teal,darkblue, black); */
+/* background: linear-gradient(135deg, purple , navy , black); */
+/* background:linear-gradient(135deg,magenta,violet , black); */
+/* background: linear-gradient(135deg, #ff512f, #dd2476, #240b36); */
+  background: linear-gradient( darkgreen, teal, black);
+  animation: spin 20s linear infinite;
+  filter: blur(140px);
+  opacity: 0.6;
+  z-index: 0;
 }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+/* Make sure your clock stays above the background */
+.digital-watch, .date {
+  position: relative;
+  z-index: 2;
+}}
+
+.date {
+  margin-top: 18px;
+  font-size: 30px;
+  color: var(--primary, #00ffff);
+  text-align: center;
+  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+.name{
+  margin-top: 18px;
+  font-size: 30px;
+  color: var(--primary, #00ffff);
+  text-align: center;
+  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+
+
+
+
+
+
+
