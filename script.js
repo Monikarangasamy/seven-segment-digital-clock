@@ -29,3 +29,22 @@ function changeTime() {
 }
 changeTime();
 
+function updateGreeting() {
+  const now = new Date();
+  let hour = now.getHours();
+  let greeting;
+
+  if (hour < 12) {
+    greeting = "Good Morning Sir";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon Sir";
+  } else {
+    greeting = "Good Evening Sir";
+  }
+
+  document.getElementById("name").innerText = greeting;
+}
+
+updateGreeting();
+setInterval(updateGreeting, 60 * 60 * 1000);
+

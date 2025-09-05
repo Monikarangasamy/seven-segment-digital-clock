@@ -1,4 +1,4 @@
-body {
+ body { 
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -8,7 +8,46 @@ body {
 	background-color: #000;
 	font-family: 'Courier New', monospace;
 	position: relative;
-	overflow: hidden;
+  overflow: hidden;
+ 
+;
+}@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Clock container */
+.clock-container {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Circular border with ticks */
+.circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #fff 0deg 3deg,
+    transparent 1deg 6deg
+  );
+  mask: radial-gradient(circle, transparent 65%, black 71%);
 }
 
 
@@ -17,8 +56,16 @@ body {
 .digital-watch .second {
 	position: relative;
 	display: inline-block;
-	margin: 30px;
+	margin: 10px;
 	font-size: 0;
+  right: 25px;
+  
+}
+.hour svg,
+.minute svg,
+.second svg {
+  margin-right: -30px;
+
 }
 
 
@@ -28,31 +75,31 @@ body {
 .digital-watch .minute::after {
 	content: '';
 	position: absolute;
-	right: -40px;
-	width: 20px;
-	height: 20px;
-	background-color: cyan;
+	right: -18px;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
 	/* box-shadow: 0 0 10px cyan, 0 0 20px cyan; */
-	border-radius: 50%;
+  border-radius: 50%;
 }
 .digital-watch .hour::before,
 .digital-watch .minute::before {
-	top: 80px;
+	top: 40px;
 }
 .digital-watch .hour::after,
 .digital-watch .minute::after {
-	top: 180px;
+	top: 80px;
 }
 
 
 .digital-watch svg {
 	display: inline-block;
-	margin: 20px;
+	margin: 1x;
 }
 
 
 .digital-watch svg .segment {
-	fill: rgba(0, 255, 255, 0.08); 
+	fill: rgba(216, 219, 219, 0.08); 
 	transition: .3s ease-in-out;
 }
 
@@ -115,14 +162,10 @@ body {
 .digital-watch svg.num-9 .f,
 .digital-watch svg.num-9 .g
 {
-	fill: cyan
-	/* filter: drop-shadow(0 0 8px cyan) drop-shadow(0 0 14px cyan); */
+	fill: #fff;
+	/* filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 14px #fff); */
+
 }
-
-
-
-
-
 
 
 body::before {
@@ -134,8 +177,8 @@ body::before {
 	height: 100%;
 	background: repeating-linear-gradient(
 		0deg,
-		rgba(90, 223, 223, 0.08) 0px,
-		rgba(0, 255, 255, 0.08) 2px,
+		rgba(216, 219, 219, 0.08) 0px,
+		rgba(216, 219, 219, 0.08) 2px,
 		transparent 8px,
 		transparent 8px
 	);
@@ -144,33 +187,35 @@ body::before {
 .ampm {
     position: absolute;
     top: 8px;
-    right: -85px;
-    color: cyan;
-    font-size: 60px;
+    right: -35px;
+    color: #fff;
+    font-size: 25px;
     font-weight: bold;
     /* text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan; */
-    letter-spacing: 7px;
+     letter-spacing: 7px;
 }
 
 
 
 /* Neon gradient overlay */
-body::before {
+ body::before {
   content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
+  background: linear-gradient(135deg, rgb(215, 136, 215) , darkgreen(300, 42, 200) , rgb(231, 227, 227));
 /* background: linear-gradient(135deg, teal,darkblue, black); */
-/* background: linear-gradient(135deg, purple , navy , black); */
+  /* background: linear-gradient(135deg, purple , navy , black); */
   /* background: linear-gradient(135deg,magenta,violet , black); */
-/* background: linear-gradient(135deg, #ff512f, #dd2476, #240b36); */
-  background: linear-gradient( darkgreen, teal, black);
+  /* background: linear-gradient(135deg, #cf4328, #de9ab8, #240b36); */
+  /* background: linear-gradient( darkgreen, teal, black); */
   animation: spin 10s linear infinite;
   filter: blur(140px);
   opacity: 0.8;
   z-index: 2;
+  
 }
 
 @keyframes spin {
@@ -178,13 +223,38 @@ body::before {
   to { transform: rotate(360deg); }
 }
 
-
-
-/* Make sure your clock stays above the background */
-.digital-watch, .date {
+ .digital-watch, .date {
   position: relative;
   z-index: 2;
+}  
+.date {
+  margin-top: 18px;
+  font-size: 27px;
+  color: var(--primary, #fff);
+  text-align: center;
+  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+ 
 }
+.name{
+ 
+  margin-top: -20px; 
+  margin-bottom: 35px;
+  font-size: 28px;
+  color: var(--primary, #fff);
+  text-align: center;
+  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px ;
+  }
+
+
+
+
+
+
 
 
 
@@ -200,37 +270,44 @@ body::before {
         padding: 0;
         height: 100vh;
         background: #181c22;
+        overflow: hidden;
     }
 
     .digital-watch {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        width: 100vw;
-        padding-top: 40px;
+        width: 200px;
+        height: 120px;
+        margin: 20px;
+        margin-left: 20px;
+        padding-top: 1px;
         box-sizing: border-box;
+        transform: scale(0.8);   /* shrink for smaller screens */
+        gap: -10px;
+        top: -60px;
     }
 
     .digital-watch .hour,
     .digital-watch .minute,
     .digital-watch .second {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        width: 50vw;
-        min-height: 160px;
-        position: relative;
-    }
+      position: relative;
+      display: flex;
+      top: -23px;
 
-    .digital-watch svg {
-        margin: 0 10px;
-        width: 60vw !important;
-        height: 30vw !important;
-        max-width: 240px;
-        max-height: 120px;
+      margin: 20px;
+      right: 110px;
+      width: 97px;
+      
     }
+    .digital-watch .hour svg,
+    .digital-watch .minute svg,   
+    .digital-watch .second svg {
+        margin-right: -15px;
+        width: 70px;  /* Adjust size for mobile */
+        height: auto;
+        margin-top: -20px;
+      }
 
     .digital-watch .hour::before,
     .digital-watch .hour::after,
@@ -238,10 +315,10 @@ body::before {
     .digital-watch .minute::after {
         display: block;
         position: absolute;
-        right: -12px;
-        width: 9px;
-        height: 9px;
-        background-color: cyan;
+        right: -22px;
+        width: 6px;
+        height: 6px;
+        background-color: #fff;
         /* box-shadow: 0 0 10px cyan, 0 0 20px cyan; */
         border-radius: 50%;
         content: '';
@@ -254,21 +331,65 @@ body::before {
 
     .digital-watch .hour::before,
     .digital-watch .minute::before {
-        top: 40px;
+        top: 1px;
     }
     .digital-watch .hour::after,
     .digital-watch .minute::after {
-        top: 90px;
+        top: 25px;
+    }
+    .digital-watch svg {
+        display: inline-block;
+        margin: 1px 1px;
+        width: 50px;  /* Adjust size for mobile */
+        height: auto;
+        margin-right: 1px;
+
+
     }
     .ampm {
     position: absolute;
-    top: 100px;
-    right: -50px;
-    color: cyan;
-    font-size: 30px;
+    top: 50px;
+    right: 5px;
+    color: #fff;
+    font-size: 14px;
     font-weight: bold;
-    /* text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan; */
-    letter-spacing: 7px;
+     /* text-shadow: 0 0 4px cyan, 0 0 10px cyan, 0 0 110px cyan;  */
+    letter-spacing: 2px;
+}
+
+  /* Clock container */
+.clock-container {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 180px;
+  right: -2px;
+}
+
+/* Circular border with ticks */
+.circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #fff 0deg 3deg,
+    transparent 1deg 6deg
+  );
+  mask: radial-gradient(circle, transparent 65%, black 71%);
 }
 /* Neon gradient overlay */
 body::before {
@@ -278,11 +399,12 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
+
+  background: linear-gradient(135deg, rgb(237, 113, 237) , darkgreen(102, 102, 214) , rgb(231, 227, 227));
 /* background: linear-gradient(135deg, teal,darkblue, black); */
-/* background: linear-gradient(135deg, purple , navy , black); */
 /* background:linear-gradient(135deg,magenta,violet , black); */
 /* background: linear-gradient(135deg, #ff512f, #dd2476, #240b36); */
-  background: linear-gradient( darkgreen, teal, black);
+/* background: linear-gradient( darkgreen, teal, black); */
   animation: spin 20s linear infinite;
   filter: blur(140px);
   opacity: 0.6;
@@ -296,29 +418,36 @@ body::before {
 
 
 
-/* Make sure your clock stays above the background */
+
 .digital-watch, .date {
   position: relative;
   z-index: 2;
-}}
-
-.date {
-  margin-top: 18px;
-  font-size: 30px;
-  color: var(--primary, #00ffff);
-  text-align: center;
-  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
-  font-weight: 600;
-  font-family: 'Courier New', monospace;
 }
-.name{
-  margin-top: 18px;
-  font-size: 30px;
-  color: var(--primary, #00ffff);
-  text-align: center;
-  /* text-shadow: 0 0 6px var(--primary, #00ffff); */
-  font-weight: 600;
-  font-family: 'Courier New', monospace;
+
+  .date {
+
+    margin-top: 1px;
+    top: -100px;
+    font-size: 17px;
+    color: var(--primary, #fff);
+    text-align: center;
+    /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+  }
+  .name{
+  
+    margin-top: 100px; 
+    margin-bottom: 60px;
+    font-size: 17px;
+    color: var(--primary, #fff);
+    text-align: center;
+    /* text-shadow: 0 0 6px var(--primary, #00ffff); */
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px ;
+    }
+
 }
 
 
