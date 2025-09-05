@@ -272,7 +272,6 @@ body::before {
         background: #181c22;
         overflow: hidden;
     }
-
     .digital-watch {
         display: flex;
         flex-direction: row;
@@ -283,10 +282,23 @@ body::before {
         margin-left: 20px;
         padding-top: 1px;
         box-sizing: border-box;
-        transform: scale(0.8);   /* shrink for smaller screens */
+        transform: scale(1.0);   /* shrink for smaller screens */
         gap: -10px;
         top: -60px;
     }
+
+  @media (max-width: 768px) {
+    .digital-watch {
+      transform: scale(0.8);   /* shrink slightly */
+      }
+}
+  @media (max-width: 480px) {
+    .digital-watch {
+      transform: scale(0.6);   /* shrink more */
+  }
+}
+
+
 
     .digital-watch .hour,
     .digital-watch .minute,
@@ -367,7 +379,8 @@ body::before {
   align-items: center;
   justify-content: center;
   margin-top: 180px;
-  right: -2px;
+  right: -1px;
+  aspect-ratio: 1 / 1;
 }
 
 /* Circular border with ticks */
